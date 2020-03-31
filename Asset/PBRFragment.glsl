@@ -1,5 +1,5 @@
 #version 330 core
-out vec4 FragColor;
+out vec4 frag_color;
 in vec2 out_texcoord;
 in vec3 out_world;
 in vec3 out_normal;
@@ -144,5 +144,5 @@ void main()
     // gamma correct
     color = pow(color, vec3(1.0/2.2)); 
 
-    FragColor = vec4(color, 1.0);
+    frag_color = vec4(color, 1.0);
 }
