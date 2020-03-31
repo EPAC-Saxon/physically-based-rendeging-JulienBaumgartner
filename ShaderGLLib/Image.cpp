@@ -12,12 +12,24 @@ namespace sgl {
 
 	Image::Image(const std::string& file)
 	{
-#pragma message("Fill me up!")
+		unsigned char* value;
+		int width;
+		int height;
+		int channel;
+
+		image_ = stbi_load(file.c_str(), &width, &height, &channel, STBI_rgb_alpha);
+		if (image_ == NULL)
+		{
+			throw std::runtime_error("Unable to load file: " + file);
+		}
+
+		dx_ = static_cast<size_t>(width);
+		dy_ = static_cast<size_t>(height);
 	}
 
 	Image::~Image()
 	{
-#pragma message("Fill me up!")
+		stbi_image_free(image_);
 	}
 
 }	// End namespace sgl.
